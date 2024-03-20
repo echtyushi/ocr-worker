@@ -15,10 +15,6 @@ class HomeController
      */
     public function home(Request $request): View
     {
-        $file = resource_path('pdf/test.pdf');
-
-        dd($file);
-
         return view('home');
     }
 }
