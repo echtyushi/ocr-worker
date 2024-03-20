@@ -13,7 +13,6 @@
 */
 
 use Framework\Foundation\Application;
-use Framework\Foundation\Config;
 use Framework\Http\Kernel;
 
 /**
@@ -33,13 +32,9 @@ $app = require_once 'bootstrap/app.php';
 |--------------------------------------------------------------------------
 */
 
-$app->get(Config::class)->set(
-    [
-        'app' => include base_path('/config/app.php'),
-    ]
+$app->set_services(
+    []
 );
-
-$app->set_services([]);
 
 $app->bootstrap();
 
