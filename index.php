@@ -12,13 +12,14 @@
 |--------------------------------------------------------------------------
 */
 
-use Framework\Foundation\Application;
 use Framework\Http\Kernel;
+use Framework\Foundation\Application;
 
-/**
- * @var Application $app
- */
-$app = require_once 'bootstrap/app.php';
+require_once 'autoload.php';
+require_once 'Framework/helpers.php';
+require_once 'routes/web.php';
+
+$app = new Application(__DIR__);
 
 /*
 |--------------------------------------------------------------------------
@@ -32,10 +33,7 @@ $app = require_once 'bootstrap/app.php';
 |--------------------------------------------------------------------------
 */
 
-$app->set_services(
-    []
-);
-
+$app->set_services([]);
 $app->bootstrap();
 
 $app->get(Kernel::class)->handle(request());

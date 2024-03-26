@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Framework\Foundation\Session;
+use Framework\Http\Middleware;
 use Framework\Http\Request;
 
-class StartSession
+class SessionMiddleware extends Middleware
 {
     /**
      * Session instance.
