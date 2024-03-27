@@ -21,8 +21,7 @@ require_once 'routes/web.php';
 
 $app = new Application(getcwd());
 
-$app->set_config_path(base_path() . '/config');
-
+$app->set_config_path(base_path('config'));
 /*
 |--------------------------------------------------------------------------
 | Application Setup
