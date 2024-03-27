@@ -19,7 +19,9 @@ require_once 'autoload.php';
 require_once 'Framework/helpers.php';
 require_once 'routes/web.php';
 
-$app = new Application(__DIR__);
+$app = new Application(getcwd());
+
+$app->set_config_path(base_path() . '/config');
 
 /*
 |--------------------------------------------------------------------------
