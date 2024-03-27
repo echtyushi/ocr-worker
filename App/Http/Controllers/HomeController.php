@@ -2,13 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\GhostscriptService;
 use Framework\Foundation\View;
 use Framework\Http\Request;
 use Framework\Routing\Controller;
-use Framework\Support\Console;
 
 class HomeController extends Controller
 {
+    /**
+     * The GhostscriptService instance.
+     *
+     * @var GhostscriptService
+     */
+    private GhostscriptService $ghostscript_service;
+
+    /**
+     * HomeController constructor.
+     *
+     * @param GhostscriptService $ghostscript_service The GhostscriptService instance.
+     */
+    public function __construct(GhostscriptService $ghostscript_service)
+    {
+        $this->ghostscript_service = $ghostscript_service;
+    }
+
     /**
      * Default view.
      *
@@ -17,30 +34,13 @@ class HomeController extends Controller
      */
     public function home(Request $request): View
     {
-        $pdfPath = resource_path('pdf/test.pdf');
-        $imagePath = resource_path('images/page_1.jpg');
-        $htmlPath = resource_path('html/output');
+        $size = $this->ghostscript_service->get_size(public_path() . '/pdf/test.pdf');
 
-        Console::call('gswin64c', [
-            '-o', $imagePath,
-            '-sDEVICE=jpeg',
-            '-dJPEGQ=100',
-            '-r300',
-            '-dFirstPage=18',
-            '-dLastPage=18',
-            $pdfPath
-        ]);
-
-        Console::call('tesseract', [
-            $imagePath,
-            $htmlPath,
-            '-l eng',
-            '--psm 6',
-            '--oem 2'
-        ]);
-
-        echo file_get_contents(resource_path('html/output.txt'));
-
-        return view('home');
+        return view('home',
+            [
+                'pdf_path' => asset('pdf/test.pdf'),
+                'pdf_size' => $size
+            ]
+        );
     }
 }

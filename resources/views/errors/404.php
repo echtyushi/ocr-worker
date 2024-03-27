@@ -9,7 +9,7 @@
 
 <body>
 
-<div>Page not found.</div>
+<div>Page not found. <?php echo $message ?? '' ?></div>
 
 <?php if (config('app.development_mode') === true) { ?>
     <div>Tried to access: <?php echo url()->current(); ?></div>
