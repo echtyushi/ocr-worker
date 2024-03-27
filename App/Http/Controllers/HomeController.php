@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Framework\Foundation\View;
 use Framework\Http\Request;
 use Framework\Routing\Controller;
+use Framework\Support\Console;
 
 class HomeController extends Controller
 {
