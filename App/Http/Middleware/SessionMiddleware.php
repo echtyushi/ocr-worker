@@ -17,7 +17,9 @@ class SessionMiddleware extends Middleware
     private Session $session;
 
     /**
-     * @param Session $session
+     * SessionMiddleware constructor.
+     *
+     * @param Session $session The session instance.
      */
     public function __construct(Session $session)
     {
@@ -27,8 +29,8 @@ class SessionMiddleware extends Middleware
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param Request $request The incoming request.
+     * @param Closure $next The next middleware closure.
      * @return mixed
      */
     public function handle(Request $request, Closure $next)

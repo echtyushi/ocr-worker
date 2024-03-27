@@ -21,7 +21,9 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected array $middleware = [];
+    protected array $middleware = [
+        SessionMiddleware::class
+    ];
 
     /**
      * The route middleware groups for the application.
@@ -30,9 +32,5 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected array $route_middleware = [
-        'web' => [
-            SessionMiddleware::class
-        ]
-    ];
+    protected array $route_middleware = [];
 }

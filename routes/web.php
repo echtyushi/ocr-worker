@@ -15,4 +15,4 @@
 use App\Http\Controllers\HomeController;
 use Framework\Routing\Router;
 
-Router::get('/', [HomeController::class, 'home'])->name('home')->middleware('web');
+Router::get('/', [HomeController::class, 'home'])->name('home');
