@@ -1,0 +1,35 @@
+#image_container {
+    position: relative;
+    width: fit-content;
+}
+
+#image {
+    user-select: none; /* Prevent image from being selectable */
+    pointer-events: none;
+}
+
+.selection_region {
+    position: absolute;
+    border: 1px dashed red;
+    pointer-events: auto;
+    width: 200px; /* Default width */
+    height: 100px; /* Default height */
+}
+
+.highlighted {
+    border-color: blue !important;
+}
+
+.delete_btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#image_container.selecting {
+    cursor: crosshair;
+}

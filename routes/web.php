@@ -16,3 +16,4 @@ use App\Http\Controllers\HomeController;
 use Framework\Routing\Router;
 
 Router::get('/', [HomeController::class, 'home'])->name('home');
+Router::post('/process', [HomeController::class, 'process'])->name('process');
